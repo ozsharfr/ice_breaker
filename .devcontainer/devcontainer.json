@@ -5,7 +5,18 @@
             "enablePresidio" : false,
             "enableRedis" : true,
             "enableLangfuse" : true,
-            "startWithDefaults": false
+            "startWithDefaults": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "redhat.vscode-yaml",
+                "GitHub.copilot",
+                "eamodio.gitlens"
+            ]
         }
     },
     "portsAttributes": {
