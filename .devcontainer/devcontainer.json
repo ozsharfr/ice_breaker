@@ -2,7 +2,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "./llm-gateway" : {
-            "enablePresidio" : false,
+            "enablePresidio" : true,
             "enableRedis" : true,
             "enableLangfuse" : true,
             "startWithDefaults": true
@@ -22,6 +22,7 @@
             ]
         }
     },
+    "postStartCommand": "/bin/bash -c .devcontainer/postStart.sh",
     "portsAttributes": {
         "3000": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},
