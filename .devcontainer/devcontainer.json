@@ -6,6 +6,9 @@
             "enableRedis" : true,
             "enableLangfuse" : true,
             "startWithDefaults": true
+        },
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/ollama:latest": {
+            "model": "phi3"
         }
     },
     "customizations": {
