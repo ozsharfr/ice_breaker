@@ -2,12 +2,27 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "./llm-gateway" : {
-            "enablePresidio" : false,
+            "enablePresidio" : true,
             "enableRedis" : true,
             "enableLangfuse" : true,
-            "startWithDefaults": false
+            "startWithDefaults": true
+        },
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/ollama:latest": {
+            "model": "phi3"
         }
     },
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "redhat.vscode-yaml",
+                "GitHub.copilot",
+                "eamodio.gitlens"
+            ]
+        }
+    },
+    "postStartCommand": "/bin/bash -c .devcontainer/postStart.sh",
     "portsAttributes": {
         "3000": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},

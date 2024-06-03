@@ -1,13 +1,8 @@
 model_list:
-  - model_name: phi3 # sample hosted open source model with openai compatible api
+  - model_name: phi3 # sample hosted open source model with ollama
     litellm_params:
       model: ollama/phi3 
-      api_base: http://0.0.0.0:11435
-      api_key: "dummy"
-  - model_name: nomic-embed-text # sample hosted open source model with openai compatible api
-    litellm_params:
-      model: ollama/nomic-embed-text 
-      api_base: http://0.0.0.0:11435
+      api_base: http://0.0.0.0:11434
       api_key: "dummy"
 litellm_settings:
   callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
@@ -17,7 +12,5 @@ litellm_settings:
   set_verbose: True
   cache: True          # set cache responses to True, litellm defaults to using a redis cache
   cache_params:
-    type: "redis-semantic"
-    redis_semantic_cache_use_async: True
-    similarity_threshold: 0.9   # similarity threshold for semantic cache
-    redis_semantic_cache_embedding_model: nomic-embed-text  # set this to a model_name set in model_list
+    type: "redis"
+  
