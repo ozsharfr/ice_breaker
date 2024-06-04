@@ -22,7 +22,7 @@
             ]
         }
     },
-    "postStartCommand": "/bin/bash -c .devcontainer/postStart.sh",
+    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &'",
     "portsAttributes": {
         "3000": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},
