@@ -1,1 +1,91 @@
-# engacc-llm-gateway
+# LLM Gateway - DEP AI
+
+## Introduction
+
+Every developer and team that builds a GenAI solution or product need to implement a set of common NFRs in order to track performance, reduce costs and be well rounded for enterprise deployments. Built on top of Open Source techonlogies, DEP AI's LLM Gateway approach aims to simplify the implementation for asset teams by providing easily integrateable components that take care of the following functionality:
+
+- **Routing** - We provide the ability to configure and route your requests to any LLM required with a simple API using LiteLLM. LLM Gateway supports multiple LLM providers including OpenAI, Azure OpenAI, AWS Bedrock, Google Cloud Gemini, and even hosting your own LLMs.
+- **Virtual Keys** - Create virtual keys with fine granular access controls to decide which users/system components have access to which LLMs without exposing the underlying secrets.
+- **Caching** - Integrate a caching layer to reduce the number of calls to the LLMs and improve the performance of your application while reducing costs. We support both Simple and Semantic caching with Redis.
+- **Tracing** - Track and trace all your LLM calls, monitor requests and responses, and track cost and latencies of your LLM usage using Langfuse.
+- **PII Masking** - Mask PII/PHI data in your LLM calls to avoid sensitive information being exposed to the LLM providers.
+
+![LLM Gateway Overview](docs/images/high-level-overview.png "LLM Gateway Overview")
+
+
+## Getting Started
+
+This dev container experience is the easiest way to experience LLM Gateway. This container includes all the necessary components to run LLM Gateway and is pre-configured with a sample LLM provider.
+
+## Components:
+
+Listed below are some of the LLM Gateway components that are configured in this dev container and the credentials to access them for this demonstration.
+
+| S.No. | Component | Notes |
+|----------:|:----------|:----------|
+| 1   | LiteLLM   |Used as the core routing agent to configure LLM deployments. <ul><li>UI is available at **https://<CODESPACE_NAME>-4000.app.github.dev/ui**  </li><li>Credentials: admin, sk-password</li></ul> |
+| 2    | Redis   | Used as the caching layer for LLM calls.  |
+| 3    | Postgres   | Database layer to store LiteLLM and Langfuse metadata  |
+| 4    | Langfuse   | Tracing component used to keep track of LLM calls, latencies and costs<ul><li>UI is available at **https://<CODESPACE_NAME>-3000.app.github.dev**</li><li>Credentials: admin@dep.com, password</li></ul>   |
+| 5    | Presidio   | Open source tool for PII/PHI Masking  |
+| 6    | Ollama   | Model serving library used to serve open source models such as `phi3` and `nomic-embed-text` for this experience.    |
+
+
+## Basic Usage:
+
+The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with the `model-config.yaml` file as shown below. 
+
+This config file configures models from OpenAI, Bedrock and Ollama to be routed through the LLM Gateway. It also configures caching with Redis, tracing with Langfuse and PII masking with Presidio to be applied to all the LLMs configured.
+
+### Sample configuration for LiteLLM
+```yaml filename="model-config.yaml"
+model_list:
+  - model_name: gpt-3.5-turbo
+    litellm_params:
+      model: openai/gpt-3.5-turbo
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: bedrock-llama2-13b ### RECEIVED MODEL NAME ###
+    litellm_params: # all params accepted by litellm.completion() - https://docs.litellm.ai/docs/completion/input
+      model: bedrock/meta.llama2-13b-chat-v1 ### MODEL NAME sent to `litellm.completion()` ###
+      aws_region_name: us-east-1
+  - model_name: phi3 # sample hosted open source model with ollama
+    litellm_params:
+      model: ollama/phi3 
+      api_base: http://0.0.0.0:11434
+      api_key: "dummy"
+  - model_name: nomic-embed-text
+    litellm_params:
+      model: ollama/nomic-embed-text
+      api_base: http://0.0.0.0:11434
+      api_key: "dummy"
+litellm_settings:
+  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
+  success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
+  drop_params: True
+  telemetry: False
+  set_verbose: True
+  cache: True          # set cache responses to True, litellm defaults to using a redis cache
+  cache_params:
+    type: "redis"
+```
+
+Sample config files to add LLMs from various providers are available in the `/opt/llm_gateway/configs` directory. You can set the appropriate environment variables in the `.env` file (such as OpenAI API keys) and use the `start-llm-gateway.sh` script to start the LLM Gateway.
+
+```bash
+/opt/llm_gateway/start-llm-gateway.sh --config /opt/llm_gateway/configs/model-config-ollama.yaml 
+```
+
+Once you configure your models in the `model-config.yaml` file, you can start using the LLM Gateway to route your requests to the LLMs. Below is a sample code snippet to use the LLM Gateway to route your requests to the LLMs using Langchain. Note that you can use any model with the OpenAI chat model from Langchain by configuring the API base URL to point to the LLM Gateway endpoint. 
+
+ ```python filename="chat_langchain.py"
+      from langchain.chat_models import ChatOpenAI
+
+      chat = ChatOpenAI(
+         openai_api_base="http://0.0.0.0:4000", # set openai_api_base to the LLM Gateway endpoint
+         model = "bedrock-llama2-13b", # model name from the model-config.yaml
+         temperature=0.1, # additional model configs
+         api_key="password" # virtual key setup in LLM Gateway
+      )
+      ```
+
+
