@@ -90,7 +90,7 @@ Below is a sample code snippet to use the LLM Gateway to route your requests to 
 
 ### Use other LLM providers
 
-As this devcontainer is configured to start with a set of pre-defined configurations, you need to stop the litellm service before starting the LLM Gateway with a new model config file. 
+As this devcontainer is configured to start with a set of pre-defined configurations, you need to stop the gateway service before starting the LLM Gateway with a new model config file. 
 
 Stop the litellm service by running the `stop-llm-gateway.sh` script
 
