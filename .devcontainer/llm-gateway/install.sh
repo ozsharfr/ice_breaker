@@ -9,6 +9,7 @@ cp llm_gateway_startup_sample/.env /opt/llm_gateway
 chown -R "$_REMOTE_USER" /opt/llm_gateway
 chmod -R u+rw /opt/llm_gateway/*
 chmod +x /opt/llm_gateway/start-llm-gateway.sh
+chmod +x /opt/llm_gateway/stop-llm-gateway.sh
 
 cp README.md /opt/llm_gateway
 

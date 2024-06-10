@@ -44,11 +44,11 @@ model_list:
     litellm_params:
       model: openai/gpt-3.5-turbo
       api_key: os.environ/OPENAI_API_KEY
-  - model_name: bedrock-llama2-13b ### RECEIVED MODEL NAME ###
-    litellm_params: # all params accepted by litellm.completion() - https://docs.litellm.ai/docs/completion/input
-      model: bedrock/meta.llama2-13b-chat-v1 ### MODEL NAME sent to `litellm.completion()` ###
+  - model_name: bedrock-llama2-13b 
+    litellm_params: 
+      model: bedrock/meta.llama2-13b-chat-v1 
       aws_region_name: us-east-1
-  - model_name: phi3 # sample hosted open source model with ollama
+  - model_name: phi3 
     litellm_params:
       model: ollama/phi3 
       api_base: http://0.0.0.0:11434
@@ -75,17 +75,77 @@ Sample config files to add LLMs from various providers are available in the `/op
 /opt/llm_gateway/start-llm-gateway.sh --config /opt/llm_gateway/configs/model-config-ollama.yaml 
 ```
 
-Once you configure your models in the `model-config.yaml` file, you can start using the LLM Gateway to route your requests to the LLMs. Below is a sample code snippet to use the LLM Gateway to route your requests to the LLMs using Langchain. Note that you can use any model with the OpenAI chat model from Langchain by configuring the API base URL to point to the LLM Gateway endpoint. 
+Below is a sample code snippet to use the LLM Gateway to route your requests to the LLMs using Langchain. Note that you can use any model with the OpenAI chat model from Langchain by configuring the API base URL to point to the LLM Gateway endpoint. 
 
  ```python filename="chat_langchain.py"
       from langchain.chat_models import ChatOpenAI
 
       chat = ChatOpenAI(
          openai_api_base="http://0.0.0.0:4000", # set openai_api_base to the LLM Gateway endpoint
-         model = "bedrock-llama2-13b", # model name from the model-config.yaml
+         model = "phi3", # model name from the model-config.yaml
          temperature=0.1, # additional model configs
-         api_key="password" # virtual key setup in LLM Gateway
+         api_key="sk-password" # virtual key setup in LLM Gateway
       )
-      ```
+```
 
+### Use other LLM providers
 
+As this devcontainer is configured to start with a set of pre-defined configurations, you need to stop the litellm service before starting the LLM Gateway with a new model config file. 
+
+Stop the litellm service by running the `stop-llm-gateway.sh` script
+
+```bash
+/opt/llm_gateway/stop-llm-gateway.sh
+```
+Read the following sections to configure the LLM Gateway with different LLM providers.
+
+#### OpenAI
+
+A sample config for OpenAI is available at `/opt/llm_gateway/configs/model-config-openai.yaml`.
+
+For example, here is a sample model config for gpt-3.5-turbo in the `model-config-openai.yaml` file
+
+```yaml
+model_list:
+  - model_name: gpt-3.5-turbo
+    litellm_params:
+      model: openai/gpt-3.5-turbo
+      api_key: os.environ/OPENAI_API_KEY
+```
+
+Add or change the required model names and aliases in the `model-config-openai.yaml` file and set the OpenAI API key in the `/opt/llm_gateway/.env` file
+
+```bash
+OPENAI_API_KEY=sk-1234567890
+```
+and start the LLM Gateway with the following command
+
+```bash
+/opt/llm_gateway/start-llm-gateway.sh --config /opt/llm_gateway/configs/model-config-openai.yaml 
+```
+
+#### Bedrock
+
+AWS authentication is required to access the Bedrock models. Refer to the feature [here](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/tree/main/src/dep-ai) for adding okta-aws-cli to your devcontainer. 
+
+Once the feature is added to the `devcontainer.json`, rebuild the codespace and login to okta-aws-cli using the following command in the terminal
+
+```bash
+okta-dep-auth.sh
+```
+
+After authenticating with okta-cli, LLM Gateway maybe started with a model config file. A sample config for Bedrock is available at `/opt/llm_gateway/configs/model-config-bedrock.yaml`. For example, here is a sample model config for meta.llama2-13b-chat-v1 model in the `model-config-bedrock.yaml` file
+
+```yaml
+  - model_name: meta.llama2-13b-chat-v1
+    litellm_params: 
+      model: bedrock/meta.llama2-13b-chat-v1 
+      aws_region_name: us-east-1
+```
+Add or change the required model names and aliases in the `model-config-bedrock.yaml` file and start the LLM Gateway with the following command
+
+```bash
+/opt/llm_gateway/start-llm-gateway.sh --config /opt/llm_gateway/configs/model-config-bedrock.yaml 
+```
+
+Note: As the temporary credentials expire, you may need to re-authenticate with okta-aws-cli to get new credentials and restart the LLM Gateway to apply the new credentials.
