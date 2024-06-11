@@ -149,3 +149,11 @@ Add or change the required model names and aliases in the `model-config-bedrock.
 ```
 
 Note: As the temporary credentials expire, you may need to re-authenticate with okta-aws-cli to get new credentials and restart the LLM Gateway to apply the new credentials.
+
+### Troubleshooting
+
+Try the following steps if you encounter any issues while with LLM Gateway services in this codespace:
+- Check the logs at /opt/llm_gateway/logs/llm-gateway.log
+- Ensure the model config file is correctly configured, refer to the sample config files in /opt/llm_gateway/configs
+- Rebuild the codespace if any of the LLM Gateway components are not starting
+- If the LiteLLM service is not running/unavalable in the PORTS tab, stop the service using the `stop-llm-gateway.sh` script and start the service either by running `start-llm-gateway.sh` with proper confifs at at `/opt/llm_gateway/` directory or start the LLM Gateway with default configs by running the `postStart.sh` script manually by running `.devcontainer/postStart.sh` in the terminal
