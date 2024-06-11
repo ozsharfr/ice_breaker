@@ -8,7 +8,8 @@
             "startWithDefaults": true
         },
         "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/ollama:latest": {
-            "model": "phi3"
+            "models": "phi3,nomic-embed-text",
+            "maxLoadedModels": "2"
         }
     },
     "customizations": {
