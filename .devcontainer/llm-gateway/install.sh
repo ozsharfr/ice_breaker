@@ -4,6 +4,7 @@ echo "Installing llm-gateway feature"
 set -euo pipefail
 
 mkdir -p /opt/llm_gateway
+mkdir /opt/llm_gateway/logs
 cp -r llm_gateway_startup_sample/* /opt/llm_gateway
 cp llm_gateway_startup_sample/.env /opt/llm_gateway
 chown -R "$_REMOTE_USER" /opt/llm_gateway

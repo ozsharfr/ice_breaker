@@ -33,4 +33,4 @@ while ! nc -z localhost 5432; do
     sleep 1
 done
 
-nohup litellm --config "$config_file" >> /opt/llm_gateway/llm_gateway.log 2>&1 &
+nohup litellm --config "$config_file" >> /opt/llm_gateway/logs/llm_gateway.log 2>&1 &
