@@ -9,6 +9,6 @@ if [ -z "$pid" ]; then
     echo "LiteLLM is not running."
 else
     echo "Killing LiteLLM"
-    kill $pid
+    kill "$pid"
     echo "LiteLLM killed"
 fi
