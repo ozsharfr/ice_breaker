@@ -1,11 +1,11 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "./llm-gateway" : {
-            "enablePresidio" : true,
-            "enableRedis" : true,
-            "enableLangfuse" : true,
-            "startWithDefaults": true
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:latest": {
+                "enablePresidio" : true,
+                "enableRedis" : true,
+                "enableLangfuse" : true,
+                "startWithDefaults": true
         },
         "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/ollama:latest": {
             "models": "phi3,nomic-embed-text",
