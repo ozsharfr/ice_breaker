@@ -17,6 +17,10 @@ Every developer and team that builds a GenAI solution or product need to impleme
 
 This dev container experience is the easiest way to experience LLM Gateway. This container includes all the necessary components to run LLM Gateway and is pre-configured with a sample LLM provider.
 
+The devcontainer features used in this repo are listed below with a link to the respective feature documentation:
+- [ollama](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/blob/main/src/ollama/README.md)
+- [llm-gateway](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/blob/main/src/llm-gateway/README.md)
+
 ## Components:
 
 Listed below are some of the LLM Gateway components that are configured in this dev container and the credentials to access them for this demonstration.
