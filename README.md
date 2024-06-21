@@ -25,17 +25,22 @@ The devcontainer features used in this repo are listed below with a link to the 
 
 Listed below are some of the LLM Gateway components that are configured in this dev container and the credentials to access them for this demonstration.
 
-| S.No. | Component | Notes |
-|----------:|:----------|:----------|
-| 1   | LiteLLM   |Used as the core routing agent to configure LLM deployments. <ul><li>UI is available at **https://<CODESPACE_NAME>-4000.app.github.dev/ui**  </li><li>Credentials: admin, sk-password</li></ul> |
-| 2    | Redis   | Used as the caching layer for LLM calls.  |
-| 3    | Postgres   | Database layer to store LiteLLM and Langfuse metadata  |
-| 4    | Langfuse   | Tracing component used to keep track of LLM calls, latencies and costs<ul><li>UI is available at **https://<CODESPACE_NAME>-3000.app.github.dev**</li><li>Credentials: admin@dep.com, password</li></ul>   |
-| 5    | Presidio   | Open source tool for PII/PHI Masking  |
-| 6    | Ollama   | Model serving library used to serve open source models such as `phi3` and `nomic-embed-text` for this experience.    |
+| S.No. | Component | Port | Notes |
+|----------:|:----------|:----------|:----------|
+| 1   | LiteLLM   | 4000 | Used as the core routing agent to configure LLM deployments. <ul><li>UI is available at **https://<CODESPACE_NAME>-4000.app.github.dev/ui**  </li><li>Credentials: admin, sk-password</li></ul> |
+| 2    | Redis   | 6379 | Used as the caching layer for LLM calls.  |
+| 3    | Postgres   | 5432 | Database layer to store LiteLLM and Langfuse metadata  |
+| 4    | Langfuse   | 3000 | Tracing component used to keep track of LLM calls, latencies and costs<ul><li>UI is available at **https://<CODESPACE_NAME>-3000.app.github.dev**</li><li>Credentials: admin@dep.com, password</li></ul>   |
+| 5    | Presidio   | 5001,5002 | Open source tool for PII/PHI Masking  |
+| 6    | Ollama   | 11434 | Model serving library used to serve open source models such as `phi3` and `nomic-embed-text` for this experience.    |
 
 
 ## Basic Usage:
+
+This repo has been configured to start with the LLM Gateway services along with some open source models using Ollama upon opening in a codespace. Credentials for services such as LiteLLM and Langfuse are pre-set and can be accessed through the URLs listed in the components table above, or by using the PORTS tab(click on the globe icon near the forwarded address column on the corresponding port number to open in browser).
+
+![Codespace UI](docs/images/codespace-ui.png)
+
 
 The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with the `model-config.yaml` file as shown below. 
 
