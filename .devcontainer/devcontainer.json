@@ -1,5 +1,5 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/python:3.10",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:latest": {
                 "enablePresidio" : true,
