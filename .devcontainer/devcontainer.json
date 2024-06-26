@@ -17,9 +17,7 @@
             "extensions":[
                 "ms-python.python",
                 "ms-toolsai.jupyter",
-                "redhat.vscode-yaml",
-                "GitHub.copilot",
-                "eamodio.gitlens"
+                "redhat.vscode-yaml"
             ]
         }
     },
