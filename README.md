@@ -43,6 +43,7 @@ This repo has been configured to start with the LLM Gateway services along with 
 
 ![Codespace UI](docs/images/codespace-ui.png)
 
+### Customize models
 
 The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with the `model-config.yaml` file as shown below. 
 
@@ -80,7 +81,7 @@ litellm_settings:
     type: "redis"
 ```
 
-Sample config files to add LLMs from various providers are available in the `/opt/llm_gateway/configs` directory. You can set the appropriate environment variables in the `.env` file (such as OpenAI API keys) and use the `start-llm-gateway.sh` script to start the LLM Gateway.
+Sample config files to add LLMs from various providers will be available in the `/opt/llm_gateway/configs` directory when you add the llm-gateway feature to your devcontainer config. The same set of configs are made available in the `configs` folder of this repo. You can set the appropriate environment variables in the `.env` file at `/opt/llm_gateway/.env` (such as OpenAI API keys) and use the `start-llm-gateway.sh` script to start the LLM Gateway.
 
 ```bash
 /opt/llm_gateway/start-llm-gateway.sh --config /opt/llm_gateway/configs/model-config-ollama.yaml 
