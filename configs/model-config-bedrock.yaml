@@ -1,0 +1,20 @@
+model_list:
+  - model_name: meta.llama2-13b-chat-v1 ### RECEIVED MODEL NAME ###
+    litellm_params: # all params accepted by litellm.completion() - https://docs.litellm.ai/docs/completion/input
+      model: bedrock/meta.llama2-13b-chat-v1 ### MODEL NAME sent to `litellm.completion()` ###
+      aws_region_name: us-east-1
+  - model_name: amazon.titan-embed-text-v1
+    litellm_params:
+      model: bedrock/amazon.titan-embed-text-v1
+litellm_settings:
+  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
+  success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
+  drop_params: True
+  telemetry: False
+  set_verbose: True
+  cache: True          # set cache responses to True, litellm defaults to using a redis cache
+  cache_params:
+    type: "redis-semantic"
+    redis_semantic_cache_use_async: True
+    similarity_threshold: 0.9   # similarity threshold for semantic cache
+    redis_semantic_cache_embedding_model: amazon.titan-embed-text-v1 # set this to a model_name set in model_list
