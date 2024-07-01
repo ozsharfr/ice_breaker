@@ -1,7 +1,7 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:latest": {
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.3": {
                 "enablePresidio" : false,
                 "enableRedis" : true,
                 "enableLangfuse" : true,
