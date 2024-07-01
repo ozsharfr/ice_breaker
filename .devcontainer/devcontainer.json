@@ -23,7 +23,7 @@
     },
     "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &'",
     "portsAttributes": {
-        "3000": {"label": "Langfuse"},
+        "3001": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},
         "5001": {"label": "Presidio Analyzer"},
         "5002": {"label": "Presidio Anonymizer"},
