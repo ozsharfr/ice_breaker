@@ -1,7 +1,7 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.3": {
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.4": {
                 "enablePresidio" : false,
                 "enableRedis" : true,
                 "enableLangfuse" : true,
@@ -21,7 +21,7 @@
             ]
         }
     },
-    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &'",
+    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh' >> /opt/llm_gateway/llm_gateway.log 2>&1 &", 
     "portsAttributes": {
         "3001": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},
