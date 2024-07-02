@@ -21,7 +21,7 @@
             ]
         }
     },
-    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &' >> /opt/llm_gateway/llm_gateway.log 2>&1 &", 
+    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &'",
     "portsAttributes": {
         "3001": {"label": "Langfuse"},
         "4000": {"label": "LiteLLM"},
