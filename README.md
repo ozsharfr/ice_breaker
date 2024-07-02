@@ -33,13 +33,13 @@ Listed below are some of the LLM Gateway components that are configured in this 
 | 2    | Redis   | 6379 | Used as the caching layer for LLM calls.  |
 | 3    | Postgres   | 5432 | Database layer to store LiteLLM and Langfuse metadata  |
 | 4    | Langfuse   | 3001 | Tracing component used to keep track of LLM calls, latencies and costs<ul><li>UI is available at **https://<CODESPACE_NAME>-3001.app.github.dev**</li><li>Credentials: admin@dep.com, password</li></ul>   |
-| 5    | Presidio   | 5001,5002 | Open source tool for PII/PHI Masking  |
+| 5    | Presidio [Optional]   | 5001,5002 | Open source tool for PII/PHI Masking  |
 | 6    | Ollama   | 11434 | Model serving library used to serve open source models such as `phi3` and `nomic-embed-text` for this experience.    |
 
 
 ## Basic Usage:
 
-This repo has been configured to start with the LLM Gateway services along with some open source models using Ollama upon opening in a codespace. Credentials for services such as LiteLLM and Langfuse are pre-set and can be accessed through the URLs listed in the components table above, or by using the PORTS tab(click on the globe icon near the forwarded address column on the corresponding port number to open in browser).
+This repo has been configured to start with the LLM Gateway components listed above (Except presidio service. See section on enabling presidio), along with some open source models using Ollama, upon opening in a codespace. Credentials for services such as LiteLLM and Langfuse are pre-set and can be accessed through the URLs listed in the components table above, or by using the PORTS tab(click on the globe icon near the forwarded address column on the corresponding port number to open in browser).
 
 ![Codespace UI](docs/images/codespace-ui.png)
 
@@ -161,6 +161,35 @@ Add or change the required model names and aliases in the `model-config-bedrock.
 ```
 
 Note: As the temporary credentials expire, you may need to re-authenticate with okta-aws-cli to get new credentials and restart the LLM Gateway to apply the new credentials.
+
+### Enable Presidio for PII masking
+
+Presidio service is not enabled in this repo. To enable Presidio, stop the LLM Gateway service 
+
+```bash
+/opt/llm_gateway/stop-llm-gateway.sh
+```
+
+Then you can start the Presidio anonymizer and analyzer services with the following command in the terminal
+
+```bash
+docker-compose -f /home/vscode/llm_gateway_packages/docker-compose.yaml up presidio-analyzer presidio-anonymizer -d
+```
+
+After the services have started, you can start the LLM Gateway with a model config file that has the `presidio` callback enabled. You can reuse the sample config file in the `configs` directory of this repo. Open `model-config-ollama.yaml` file and set the `callbacks` parameter to `["presidio"]` as shown below
+
+```yaml
+...
+litellm_settings:
+  callbacks : ["presidio"] # Optional callback when Presidio is enabled 
+...
+```
+
+Now start the LLM Gateway with the following command
+```bash 
+/opt/llm_gateway/start-llm-gateway.sh --config /workspaces/engacc-llm-gateway/configs/model-config-ollama.yaml
+```
+
 
 ### Troubleshooting
 
