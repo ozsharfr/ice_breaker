@@ -197,4 +197,4 @@ Try the following steps if you encounter any issues while with LLM Gateway servi
 - Check the logs at /opt/llm_gateway/logs/llm-gateway.log
 - Ensure the model config file is correctly configured, refer to the sample config files in /opt/llm_gateway/configs
 - Rebuild the codespace if any of the LLM Gateway components are not starting
-- If the LiteLLM service is not running/unavalable in the PORTS tab, stop the service using the `stop-llm-gateway.sh` script and start the service either by running `start-llm-gateway.sh` with proper configs at `/opt/llm_gateway/` directory or start the LLM Gateway with default configs by running the `postStart.sh` script manually by running `.devcontainer/postStart.sh` in the terminal
+- If the LiteLLM service is not running/unavailable in the PORTS tab, stop the service using the `stop-llm-gateway.sh` script and start the service either by running `start-llm-gateway.sh` with proper configs at `/opt/llm_gateway/` directory or start the LLM Gateway with default configs by running the `postStart.sh` script manually by running `.devcontainer/postStart.sh` in the terminal
