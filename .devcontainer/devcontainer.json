@@ -1,0 +1,33 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.4": {
+                "enablePresidio" : false,
+                "enableRedis" : true,
+                "enableLangfuse" : true,
+                "startWithDefaults": true
+        },
+        "ghcr.io/deloitte-us-engineering/engacc-devcontainer-features/ollama:latest": {
+            "models": "phi3,nomic-embed-text",
+            "maxLoadedModels": "2"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "redhat.vscode-yaml"
+            ]
+        }
+    },
+    "postStartCommand": "nohup bash -c '.devcontainer/postStart.sh &'",
+    "portsAttributes": {
+        "3001": {"label": "Langfuse"},
+        "4000": {"label": "LiteLLM"},
+        "5001": {"label": "Presidio Analyzer"},
+        "5002": {"label": "Presidio Anonymizer"},
+        "5432": {"label": "Postgresql"},
+        "6379": {"label": "Redis-stack"}
+    }
+}
