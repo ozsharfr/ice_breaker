@@ -44,7 +44,7 @@ This repo has been configured to start with the LLM Gateway components listed ab
 
 #### LiteLLM Dashboard
 
-The master password for LiteLLM has been set to `sk-password`. You can access the LiteLLM dashboard by navigating to the URL `https://<CODESPACE_NAME>-4000.app.github.dev/ui` in your browser. The admin username is `admin` and the password is `sk-password` (set with `LITELLM_MASTER_KEY` variable in `/opt/llm_gateway/.env`). 
+You can access the LiteLLM dashboard by navigating to the URL `https://<CODESPACE_NAME>-4000.app.github.dev/ui` in your browser. The admin username is `admin` and the password is `sk-password` (which is the master password for litellm and is set with `LITELLM_MASTER_KEY` variable in `/opt/llm_gateway/.env`). 
 
 ![LiteLLM Dashboard](docs/images/litellm-dashboard.png)
 
