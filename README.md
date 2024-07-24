@@ -42,6 +42,22 @@ This repo has been configured to start with the LLM Gateway components listed ab
 
 ![Codespace UI](docs/images/codespace-ui.png)
 
+#### LiteLLM Dashboard
+
+The master password for LiteLLM has been set to `sk-password`. You can access the LiteLLM dashboard by navigating to the URL `https://<CODESPACE_NAME>-4000.app.github.dev/ui` in your browser. The admin username is `admin` and the password is `sk-password` (set with `LITELLM_MASTER_KEY` variable in `/opt/llm_gateway/.env`). 
+
+![LiteLLM Dashboard](docs/images/litellm-dashboard.png)
+
+The LiteLLM dashboard allows you to configure models, virtual keys, and teams. One virtual key is pre-configured with this codespace. See the code in demo notebook under the 'Virtual Keys' section.
+
+#### Langfuse Dashboard
+
+This codespace is pre-configured with Langfuse, a tracing component that allows you to track and trace all your LLM calls, monitor requests and responses, and track cost and latencies of your LLM usage. You can access the Langfuse dashboard by navigating to the URL `https://<CODESPACE_NAME>-3001.app.github.dev` in your browser.  
+
+![Langfuse Dashboard](docs/images/langfuse-dashboard.png)
+
+A langfuse project is pre-configured with this codespace and the login credentials to the project are 'admin@dep.com' and 'password'. LLM Gateway requires API keys (public key and secret key) to be set as environment variables. The API keys for the preconfigured project are set in the `.env` file at `/opt/llm_gateway/.env`.
+
 ### Customize models
 
 The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with the `model-config.yaml` file as shown below. 
@@ -96,7 +112,7 @@ Below is a sample code snippet to use the LLM Gateway to route your requests to 
          openai_api_base="http://0.0.0.0:4000", # set openai_api_base to the LLM Gateway endpoint
          model = "phi3", # model name from the model-config.yaml
          temperature=0.1, # additional model configs
-         api_key="sk-password" # virtual key setup in LLM Gateway
+         api_key="sk-password" # virtual key/master key setup in LLM Gateway
       )
 ```
 
