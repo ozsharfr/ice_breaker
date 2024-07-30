@@ -1,6 +1,6 @@
 # LLM Gateway - DEP AI
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=feat%2Fllm-gateway-in-engg-portal&repo=804304038)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=830960718&skip_quickstart=true)
 
 `Recommended Configuration : 4-core , 16 GB RAM`
 
