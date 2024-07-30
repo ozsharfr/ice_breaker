@@ -174,7 +174,7 @@ Presidio service is not enabled in this repo. To enable Presidio, stop the LLM G
 Then you can start the Presidio anonymizer and analyzer services with the following command in the terminal
 
 ```bash
-docker-compose -f /home/vscode/llm_gateway_packages/docker-compose.yaml up presidio-analyzer presidio-anonymizer -d
+docker-compose -f /opt/llm_gateway/llm_gateway_packages/docker-compose.yaml up presidio-analyzer presidio-anonymizer -d
 ```
 
 After the services have started, you can start the LLM Gateway with a model config file that has the `presidio` callback enabled. You can reuse the sample config file in the `configs` directory of this repo. Open `model-config-ollama.yaml` file and set the `callbacks` parameter to `["presidio"]` as shown below
