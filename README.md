@@ -2,6 +2,8 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=feat%2Fllm-gateway-in-engg-portal&repo=804304038)
 
+`Recommended Configuration : 4-core , 16 GB RAM`
+
 ## Introduction
 
 Every developer and team that builds a GenAI solution or product needs to implement a set of common NFRs in order to track performance, reduce costs, and be well-rounded for enterprise deployments. Built on top of Open Source technologies, DEP AI's LLM Gateway approach aims to simplify the implementation for asset teams by providing easily integratable components that take care of the following functionality:
