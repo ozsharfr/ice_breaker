@@ -167,7 +167,10 @@ okta-dep-auth.sh
 After authenticating with okta-cli, LLM Gateway may be started with a model config file. A sample config for Bedrock is available at `/opt/llm_gateway/configs/model-config-bedrock.yaml`. For example, here is a sample model config for meta.llama2-13b-chat-v1 model in the `model-config-bedrock.yaml` file
 
 ```yaml
-  - model_name: meta.llama2-13b-chat-v1
+  - model_name: meta.llama2-13b-chat-v1 ### Model name to be passed by user (can be custom)
+    litellm_params: 
+      model: bedrock/meta.llama2-13b-chat-v1 ### Actual model name
+      aws_region_name: us-east-1
 
 ```
 
