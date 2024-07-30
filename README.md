@@ -22,8 +22,8 @@ This dev container experience is the easiest way to experience LLM Gateway. This
 
 The devcontainer features used in this repo are listed below with a link to the respective feature documentation:
 
-- [ollama](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/blob/main/src/ollama/README.md)
-- [llm-gateway](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/blob/main/src/llm-gateway/README.md)
+- [ollama](https://github.com/Deloitte-US-Consulting/engacc-devcontainer-features/blob/main/src/ollama/README.md)
+- [llm-gateway](https://github.com/Deloitte-US-Consulting/engacc-devcontainer-features/blob/main/src/llm-gateway/README.md)
 
 ## Components:
 
