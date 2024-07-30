@@ -50,6 +50,8 @@ You can access the LiteLLM dashboard by navigating to the URL `https://<CODESPAC
 
 The LiteLLM dashboard allows you to configure models, virtual keys, and teams. One virtual key is pre-configured with this codespace. See the code in demo notebook under the 'Virtual Keys' section.
 
+For more information on how to use virtual keys, refer to the [LiteLLM documentation](https://docs.litellm.ai/docs/proxy/virtual_keys). 
+
 #### Langfuse Dashboard
 
 This codespace is pre-configured with Langfuse, a tracing component that allows you to track and trace all your LLM calls, monitor requests and responses, and track cost and latencies of your LLM usage. You can access the Langfuse dashboard by navigating to the URL `https://<CODESPACE_NAME>-3001.app.github.dev` in your browser.  
@@ -57,6 +59,8 @@ This codespace is pre-configured with Langfuse, a tracing component that allows 
 ![Langfuse Dashboard](docs/images/langfuse-dashboard.png)
 
 A langfuse project is pre-configured with this codespace and the login credentials to the project are 'admin@dep.com' and 'password'. LLM Gateway requires API keys (public key and secret key) to be set as environment variables. The API keys for the preconfigured project are set in the `.env` file at `/opt/llm_gateway/.env`.
+
+`Note: Langfuse is pre-configured with a project and API keys. You can create a new project and set the API keys in the .env file to use Langfuse with your own project.`
 
 ### Customize models
 
@@ -118,7 +122,7 @@ Below is a sample code snippet to use the LLM Gateway to route your requests to 
 
 ### Use other LLM providers
 
-As this devcontainer is configured to start with a set of pre-defined configurations, you need to stop the gateway service before starting the LLM Gateway with a new model config file. 
+As this devcontainer is configured to start with a set of pre-defined configurations, you need to stop the gateway service before starting the LLM Gateway with a new model config file. For the exhaustive list of LLM providers supported by LiteLLM, refer to the [LiteLLM documentation](https://docs.litellm.ai/docs/providers).
 
 Stop the litellm service by running the `stop-llm-gateway.sh` script
 
@@ -219,5 +223,16 @@ Try the following steps if you encounter any issues while with LLM Gateway servi
 
 - Check the logs at /opt/llm_gateway/logs/llm-gateway.log
 - Ensure the model config file is correctly configured, refer to the sample config files in /opt/llm_gateway/configs
-- Rebuild the codespace if any of the LLM Gateway components are not starting
+- Rebuild the codespace if any of the LLM Gateway components have not started
 - If the LiteLLM service is not running/unavailable in the PORTS tab, stop the service using the `stop-llm-gateway.sh` script and start the service either by running `start-llm-gateway.sh` with proper configs at `/opt/llm_gateway/` directory or start the LLM Gateway with default configs by running the `postStart.sh` script manually by running `.devcontainer/postStart.sh` in the terminal
+
+### References
+
+This codespace LLM Gateway is built on top of the following open-source technologies:
+- [LiteLLM](https://docs.litellm.ai/docs/)
+- [Langfuse](https://langfuse.com/docs)
+- [Ollama](https://ollama.com/)
+- [Presidio](https://microsoft.github.io/presidio/)
+- [Redis-Stack](https://redis.io/blog/introducing-redis-stack/)
+- [Langchain](https://python.langchain.com/v0.2/docs/introduction/)
+
