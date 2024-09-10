@@ -1,6 +1,6 @@
 # LLM Gateway - DEP AI
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=830960718&skip_quickstart=true)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=830960718&skip_quickstart=true&machine=standardLinux32gb)
 
 `Recommended Configuration : 4-core , 16 GB RAM`
 
@@ -162,7 +162,7 @@ and start the LLM Gateway with the following command
 
 #### Bedrock
 
-AWS authentication is required to access the Bedrock models. Refer to the feature [here](https://github.com/Deloitte-US-Engineering/engacc-devcontainer-features/tree/main/src/dep-ai) for adding okta-aws-cli to your devcontainer. 
+AWS authentication is required to access the Bedrock models. Refer to the feature [here](https://github.com/Deloitte-US-Consulting/engacc-devcontainer-features/tree/main/src/dep-ai) for adding okta-aws-cli to your devcontainer. 
 
 Once the feature is added to the `devcontainer.json`, rebuild the codespace and login to okta-aws-cli using the following command in the terminal
 
