@@ -14,7 +14,5 @@ litellm_settings:
   set_verbose: True
   cache: True          # set cache responses to True, litellm defaults to using a redis cache
   cache_params:
-    type: "redis-semantic"
-    redis_semantic_cache_use_async: True
-    similarity_threshold: 0.9   # similarity threshold for semantic cache
-    redis_semantic_cache_embedding_model: amazon.titan-embed-text-v1 # set this to a model_name set in model_list
+    type: "redis"
+    ttl: 60
