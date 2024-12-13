@@ -23,7 +23,7 @@ Every developer and team that builds a GenAI solution or product needs to implem
 6. LLM Gateway supports, major LLM providers like Azure OpenAI, AWS Bedrock, Google Gemini, NVIDIA Nim, etc.
 7. For production assets builds and client engagements, use client-approved LLMs and adhere to the guidelines to obtain necessary approvals.
  
-***Synthetic** data is defined as fake or mock data generated as a substitute for live or real data. Synthetic data may not include any confidential information for PII, regardless of whether it has been anonymized.  
+***Synthetic data** is defined as fake or mock data generated as a substitute for live or real data. Synthetic data may not include any confidential information for PII, regardless of whether it has been anonymized.  
 
 ### Open LLM Gateway in GitHub Codespaces
 
