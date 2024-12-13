@@ -1,7 +1,7 @@
 {
     "image": "mcr.microsoft.com/devcontainers/python:3.10",
     "features": {
-        "eng-acc-docker-release.artifacts.deloitteinnovation.us/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.5": {
+        "eng-acc-docker-release.artifacts.deloitteinnovation.us/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.6": {
                 "enablePresidio" : false,
                 "enableRedis" : true,
                 "enableLangfuse" : true,
