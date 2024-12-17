@@ -14,17 +14,6 @@ Every developer and team that builds a GenAI solution or product needs to implem
 
 ## Getting Started
 
-### Usage Guidelines
-1. The LLM Gateway in Codespaces is a development environment, its components are not packaged along with any solutions or products created using it.
-2. The LLM Gateway Devcontainer is available on Deloitte owned GitHub Codespaces, is for use with *synthetic data only (as defined below), follow the GitHub Codespace data policies <https://developer.deloitte.com/ecr-docs/rules/#prohibited-data-types>.
-3. The open-source LLMs available through Ollama features in this preview are only approved for use with *synthetic data for Learning and PoC purposes.
-4. Codespace sessions are terminated after 30 mins of inactivity by default, on restart the data within the GitHub Codespaces environment will be available but any processes executing within will be stopped.
-5. Codespaces are permanently deleted after 30 days of inactivity.
-6. LLM Gateway supports, major LLM providers like Azure OpenAI, AWS Bedrock, Google Gemini, NVIDIA Nim, etc.
-7. For production assets builds and client engagements, use client-approved LLMs and adhere to the guidelines to obtain necessary approvals.
- 
-***Synthetic data** is defined as fake or mock data generated as a substitute for live or real data. Synthetic data may not include any confidential information for PII, regardless of whether it has been anonymized.  
-
 ### Open LLM Gateway in GitHub Codespaces
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=830960718&skip_quickstart=true&machine=standardLinux32gb)
