@@ -1,13 +1,13 @@
 {
     "image": "mcr.microsoft.com/devcontainers/python:3.10",
     "features": {
-        "artifacts.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.8": {
+        "edge.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/llm-gateway:0.1.8": {
                 "enablePresidio" : false,
                 "enableRedis" : true,
                 "enableLangfuse" : true,
                 "startWithDefaults": true
         },
-        "artifacts.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/ollama:0.0.10": {
+        "edge.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/ollama:0.0.10": {
             "models": "phi3,nomic-embed-text",
             "maxLoadedModels": "2"
         }
