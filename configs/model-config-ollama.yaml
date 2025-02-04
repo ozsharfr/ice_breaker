@@ -17,4 +17,5 @@ litellm_settings:
   cache: True          # set cache responses to True, litellm defaults to using a redis cache
   cache_params:
     type: "redis"
+    ttl: 60
   

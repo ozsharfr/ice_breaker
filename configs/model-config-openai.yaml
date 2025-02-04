@@ -19,3 +19,4 @@ litellm_settings:
     redis_semantic_cache_use_async: True
     similarity_threshold: 0.9   # similarity threshold for semantic cache
     redis_semantic_cache_embedding_model: text-embedding-3-small # set this to a model_name set in model_list
+    ttl: 60
