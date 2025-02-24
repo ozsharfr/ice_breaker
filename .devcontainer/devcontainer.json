@@ -10,12 +10,7 @@
         "edge.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/ollama:0.0.10": {
             "models": "phi3,nomic-embed-text",
             "maxLoadedModels": "2"
-        },
-       "edge.engineeringplatforms.deloitte.com/eng-acc-docker-release/deloitte-us-engineering/engacc-devcontainer-features/dep-ai:1.0.3": {
-           "oktaOrgDomain":"okta.deloitteinnovation.us",
-           "oktaClientID": "0oa6jfrzn2kpzE0iP697",
-           "oktaAppAccountFedId":"0oa5tvlxupHqG2DzI697"
-       }
+        }
     },
     "customizations": {
         "vscode": {
