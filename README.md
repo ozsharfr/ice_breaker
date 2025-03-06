@@ -82,6 +82,11 @@ model_list:
     litellm_params: 
       model: bedrock/meta.llama2-13b-chat-v1 
       aws_region_name: us-east-1
+  - model_name: gemini-pro
+    litellm_params:
+      model: vertex_ai/gemini-1.5-pro
+      vertex_project: "dip-gcp-converconsumer-sbx"
+      vertex_location: "us-east1"
   - model_name: phi3 
     litellm_params:
       model: ollama/phi3 
@@ -187,6 +192,18 @@ Add or change the required model names and aliases in the `model-config-bedrock.
 ```
 
 Note: As the temporary credentials expire, you may need to re-authenticate with okta-aws-cli to get new credentials and restart the LLM Gateway to apply the new credentials.
+
+#### Gemini
+
+Setup environment:
+Please run this to add vertex credentials to your env```gcloud auth application-default login```
+
+Please install Vertex AI API client library using below command. 
+
+```
+pip install google-cloud-aiplatform
+```
+
 
 ### Enable Presidio for PII masking
 

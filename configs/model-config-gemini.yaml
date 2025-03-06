@@ -1,0 +1,18 @@
+model_list:
+  - model_name: gemini-pro
+    litellm_params:
+      model: vertex_ai/gemini-1.5-pro
+      vertex_project: "dip-gcp-converconsumer-sbx"
+      vertex_location: "us-east1"
+litellm_settings:
+  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
+  success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
+  drop_params: True
+  telemetry: False
+  set_verbose: True
+  cache: True          # set cache responses to True, litellm defaults to using a redis cache
+  cache_params:
+    type: "redis-semantic"
+    redis_semantic_cache_use_async: True
+    similarity_threshold: 0.9   # similarity threshold for semantic cache
+    redis_semantic_cache_embedding_model: amazon.titan-embed-text-v1 # set this to a model_name set in model_list
