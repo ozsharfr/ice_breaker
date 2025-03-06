@@ -196,7 +196,11 @@ Note: As the temporary credentials expire, you may need to re-authenticate with 
 #### Gemini
 
 Setup environment:
-Please run this to add vertex credentials to your env```gcloud auth application-default login```
+Please run this to add vertex credentials to your env
+
+```
+gcloud auth application-default login
+```
 
 Please install Vertex AI API client library using below command. 
 
