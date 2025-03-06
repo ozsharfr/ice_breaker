@@ -85,7 +85,7 @@ model_list:
   - model_name: gemini-pro
     litellm_params:
       model: vertex_ai/gemini-1.5-pro
-      vertex_project: "dip-gcp-converconsumer-sbx"
+      vertex_project: <GCP Project Name>
       vertex_location: "us-east1"
   - model_name: phi3 
     litellm_params:
