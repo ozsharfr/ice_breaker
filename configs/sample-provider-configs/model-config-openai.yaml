@@ -8,7 +8,6 @@ model_list:
       model: text-embedding-3-small
       api_key: os.environ/OPENAI_API_KEY
 litellm_settings:
-  callbacks : ["presidio"] # Optional callback when Presidio is enabled
   success_callback: ["langfuse"] # Optional callback when Langfuse is enabled, and required env variables are set in the environment
   drop_params: True
   telemetry: False

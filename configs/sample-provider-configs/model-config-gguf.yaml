@@ -12,7 +12,6 @@ model_list:
       custom_llm_provider: openai
       api_key: "dummy"
 litellm_settings:
-  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
   success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
   drop_params: True
   telemetry: False

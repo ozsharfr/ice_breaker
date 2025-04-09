@@ -7,7 +7,6 @@ model_list:
     litellm_params:
       model: bedrock/amazon.titan-embed-text-v1
 litellm_settings:
-  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
   success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
   drop_params: True
   telemetry: False
