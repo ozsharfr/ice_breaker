@@ -17,7 +17,8 @@
             "extensions":[
                 "ms-python.python",
                 "ms-toolsai.jupyter",
-                "redhat.vscode-yaml"
+                "redhat.vscode-yaml",
+                "GitHub.copilot"
             ]
         }
     },

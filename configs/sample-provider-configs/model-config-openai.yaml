@@ -7,15 +7,3 @@ model_list:
     litellm_params:
       model: text-embedding-3-small
       api_key: os.environ/OPENAI_API_KEY
-litellm_settings:
-  success_callback: ["langfuse"] # Optional callback when Langfuse is enabled, and required env variables are set in the environment
-  drop_params: True
-  telemetry: False
-  set_verbose: True
-  cache: True          # set cache responses to True, litellm defaults to using a redis cache
-  cache_params:
-    type: "redis-semantic"
-    redis_semantic_cache_use_async: True
-    similarity_threshold: 0.9   # similarity threshold for semantic cache
-    redis_semantic_cache_embedding_model: text-embedding-3-small # set this to a model_name set in model_list
-    ttl: 60
