@@ -152,7 +152,9 @@ and start the LLM Gateway with the following command
 
 #### AWS Bedrock
 
-AWS authentication is required to access the Bedrock models. You can use the `okta-cli` to authenticate with AWS and get temporary credentials. After authenticating with okta-cli, LLM Gateway may be started with a model config file.
+AWS authentication is required to access the Bedrock models. You can use the `okta-cli` to authenticate with AWS and get temporary credentials. Refer to the sample repo [here](https://github.com/Deloitte-US-Engineering/dep-okta-cli) on setting up `okta-cli` in your codespace.
+
+After authenticating with okta-cli, LLM Gateway may be started with a model config file.
 
 A sample config for Bedrock is available at `configs/sample-provider-configs/model-config-bedrock.yaml`.
 
