@@ -8,7 +8,6 @@ Every developer and team that builds a GenAI solution or product needs to implem
 - **Virtual Keys** - Create virtual keys with fine-grained access controls to decide which users/system components have access to which LLMs without exposing the underlying secrets.
 - **Caching** - Integrate a caching layer to reduce the number of calls to the LLMs and improve the performance of your application while reducing costs. We support both Simple and Semantic caching with Redis.
 - **Tracing** - Track and trace all your LLM calls, monitor requests and responses, and track cost and latencies of your LLM usage using Langfuse.
-- **PII Masking** - Mask PII/PHI data in your LLM calls to avoid sensitive information being exposed to the LLM providers.
 
 ![LLM Gateway Overview](docs/images/high-level-overview.png "LLM Gateway Overview")
 
@@ -38,8 +37,7 @@ Listed below are some of the LLM Gateway components that are configured in this 
 | 2    | Redis   | 6379 | Used as the caching layer for LLM calls.  |
 | 3    | Postgres   | 5432 | Database layer to store LiteLLM and Langfuse metadata  |
 | 4    | Langfuse   | 3001 | Tracing component used to keep track of LLM calls, latencies, and costs<ul><li>UI is available at **https://<CODESPACE_NAME>-3001.app.github.dev**</li><li>Credentials: admin@dep.com, password</li></ul>   |
-| 5    | Presidio [Optional]   | 5001,5002 | Open-source tool for PII/PHI Masking  |
-| 6    | Ollama   | 11434 | Model serving library used to serve open-source models such as `phi3` and `nomic-embed-text` for this experience.    |
+| 5    | Ollama   | 11434 | Model serving library used to serve open-source models such as `phi3` and `nomic-embed-text` for this experience.    |
 
 ## Basic Usage:
 
@@ -71,7 +69,7 @@ A langfuse project is pre-configured with this codespace and the login credentia
 
 The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with the `model-config.yaml` file as shown below. 
 
-This config file configures models from OpenAI, Bedrock, and Ollama to be routed through the LLM Gateway. It also configures caching with Redis, tracing with Langfuse, and PII masking with Presidio to be applied to all the LLMs configured.
+This config file configures models from OpenAI, Bedrock, and Ollama to be routed through the LLM Gateway. It also configures caching with Redis and tracing with Langfuse.
 
 ### Sample configuration for LiteLLM
 
@@ -96,14 +94,16 @@ model_list:
       api_base: http://0.0.0.0:11434
       api_key: "dummy"
 litellm_settings:
-  callbacks : ["presidio"] # Optional callback when Presidio is enabled in feature
   success_callback: ["langfuse"] # Optional callback when Langfuse is enabled in feature, and required env variables are set in the environment
+  failure_callback: ["langfuse"]
+  langfuse_default_tags: ["cache_hit"]
   drop_params: True
   telemetry: False
   set_verbose: True
   cache: True          # set cache responses to True, litellm defaults to using a redis cache
   cache_params:
     type: "redis"
+    ttl: 60            # Sets cache expiry to 1 minute
 ```
 
 Sample config files to add LLMs from various providers will be available in the `/opt/llm_gateway/configs` directory when you add the llm-gateway feature to your devcontainer config. The same set of configs is made available in the `configs` folder of this repo. You can set the appropriate environment variables in the `.env` file at `/opt/llm_gateway/.env` (such as OpenAI API keys) and use the `start-llm-gateway.sh` script to start the LLM Gateway.
