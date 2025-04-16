@@ -41,7 +41,7 @@ Listed below are some of the LLM Gateway components that are configured in this 
 
 ## Basic Usage:
 
-This repo has been configured to start with the LLM Gateway components listed above (Except presidio service. See section on enabling presidio), along with some open-source models using Ollama, upon opening in a codespace. Credentials for services such as LiteLLM and Langfuse are pre-set and can be accessed through the URLs listed in the components table above, or by using the PORTS tab (click on the globe icon near the forwarded address column on the corresponding port number to open in the browser).
+This repo has been configured to start with the LLM Gateway components listed above, along with some models from Anthropic and open-source models using Ollama, upon opening in a codespace. Credentials for services such as LiteLLM and Langfuse are pre-set and can be accessed through the URLs listed in the components table above, or by using the PORTS tab (click on the globe icon near the forwarded address column on the corresponding port number to open in the browser).
 
 ![Codespace UI](docs/images/codespace-ui.png)
 
@@ -69,7 +69,7 @@ A langfuse project is pre-configured with this codespace and the login credentia
 
 The first step is to configure all the LLMs that you would like to route through the LLM Gateway. This can be done with a `model-config.yaml` file as shown below. 
 
-This config file configures models from OpenAI, Bedrock, and Ollama to be routed through the LLM Gateway. It also configures caching with Redis and tracing with Langfuse.
+This config file configures models from OpenAI, Bedrock, Anthropic and Ollama to be routed through the LLM Gateway. It also configures caching with Redis and tracing with Langfuse.
 
 ### Sample configuration for LiteLLM
 
