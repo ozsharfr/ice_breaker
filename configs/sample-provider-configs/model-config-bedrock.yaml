@@ -1,0 +1,8 @@
+model_list:
+  - model_name: meta.llama2-13b-chat-v1 ### RECEIVED MODEL NAME ###
+    litellm_params: # all params accepted by litellm.completion() - https://docs.litellm.ai/docs/completion/input
+      model: bedrock/meta.llama2-13b-chat-v1 ### MODEL NAME sent to `litellm.completion()` ###
+      aws_region_name: us-east-1
+  - model_name: amazon.titan-embed-text-v1
+    litellm_params:
+      model: bedrock/amazon.titan-embed-text-v1
