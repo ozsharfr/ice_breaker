@@ -33,17 +33,12 @@ print(response.choices[0].message.content)
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
-template = """Question: {question}
-
-Answer: Let's think step by step."""
-
-prompt = ChatPromptTemplate.from_template(template)
-
-model = OllamaLLM(model="ollama/phi3")
-
-chain = prompt | model
-
-chain.invoke({"question": "What is LangChain?"})
+#template = """Question: {question}
+#Answer: Let's think step by step."""
+#prompt = ChatPromptTemplate.from_template(template)
+#model = OllamaLLM(model="ollama/phi3")
+#chain = prompt | model
+#chain.invoke({"question": "What is LangChain?"})
 
 
 
