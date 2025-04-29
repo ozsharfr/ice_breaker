@@ -12,7 +12,7 @@ Answer: Let's think step by step."""
 prompt = ChatPromptTemplate.from_template(template)
 
 # Generate the prompt content
-question = "What is LangChain?"
+question = "What are some of the main reasons for global warming?"
 generated_prompt = prompt.format(question=question)
 
 # Use the client to create a completion
@@ -51,5 +51,6 @@ response = client.chat.completions.create(model="ollama/phi3", messages = [
         "content": query
     }
 ])
+
 
 print(response.choices[0].message.content)
