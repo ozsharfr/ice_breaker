@@ -52,5 +52,6 @@ for sympthom in sympthoms:
     vec = data.embedding
     vecs[sympthom] = vec
 
-
+# get 
+print ('aa')
 print (pd.DataFrame(vecs).T)
