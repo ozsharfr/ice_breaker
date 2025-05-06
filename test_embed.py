@@ -2,6 +2,7 @@ import openai
 import logging
 import pandas as pd
 from annoy import AnnoyIndex
+import seaborn as sns
 
 client = openai.OpenAI(
     api_key="sk-password",
@@ -9,10 +10,13 @@ client = openai.OpenAI(
 )
 
 
+
 sympthoms = """Abdominal pain in adults
 Blood in stool in adults
 Chest pain in adults
 Constipation in adults
+Coronary Heart Disease in adults
+Diabetes  in adults
 Cough in adults
 Diarrhea in adults
 Difficulty swallowing in adults
@@ -44,7 +48,7 @@ for sympthom in sympthoms:
     # Use the client to create a completion
     logging.info(sympthom)
     enmbed_structure = client.embeddings.create(
-    model="nomic-embed-text",
+    model="nomic-embed-text", # ollama/phi3 is also fine
     input=sympthom
     )
     data = enmbed_structure.data[0]
